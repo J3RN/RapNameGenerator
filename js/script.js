@@ -32,20 +32,15 @@ Generator.prototype.appendName = function(name) {
 }
 
 Generator.prototype.generate = function(name) {
-    var rand = Math.random();
+    var rand = Math.floor(Math.random() * 6);
 
-    if (rand < 0.2) {
-        return this.prependName(name);
-    } else if (rand < 0.4) {
-        return this.appendName(name);
-    } else if (rand < 0.6) {
-        return this.prependName(this.appendName(name));
-    } else if (rand < 0.7) {
-        return this.appendName(this.acronymize(name));
-    } else if (rand < 0.8) {
-        return this.prependName(this.acronymize(name));
-    } else {
-        return this.prependName(this.appendName(this.acronymize(name)));
+    switch(rand) {
+        case 0: return this.prependName(name);
+        case 1: return this.appendName(name);
+        case 2: return this.prependName(this.appendName(name));
+        case 3: return this.appendName(this.acronymize(name));
+        case 4: return this.prependName(this.acronymize(name));
+        case 5: return this.prependName(this.appendName(this.acronymize(name)));
     }
 }
 
